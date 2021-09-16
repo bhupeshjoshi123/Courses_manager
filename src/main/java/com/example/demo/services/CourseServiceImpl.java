@@ -16,11 +16,7 @@ public class CourseServiceImpl implements CourseService{
 
    // private List<Course> courseListing = new ArrayList<>();
 
-    public CourseServiceImpl() {
 
-       // courseListing.add( new Course(1, "english", "it is fantastic"));
-        // courseListing.add(new Course(2, "Science", "it is really awesome"));
-    }
 
     @Override
     public List<Course> getCourses() {
@@ -35,7 +31,8 @@ public class CourseServiceImpl implements CourseService{
 //                return c;
 //            }
 //        }
-        return courseDao.getById(courseId);
+        return courseDao.findById(courseId).get();
+
     }
 
     @Override

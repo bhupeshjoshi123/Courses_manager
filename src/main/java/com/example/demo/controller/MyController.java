@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //user requests
+
+@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 public class MyController {
     @Autowired
@@ -19,21 +22,22 @@ public class MyController {
     //get courses
     @GetMapping("/courses")
     public List<Course> getCourses(){
-        return courseService.getCourses();
+        return this.courseService.getCourses();
     }
     //get course with id
 
     @GetMapping("/courses/{courseId}")
     public Course getCourse(@PathVariable String courseId){
-        return courseService.getCourse(Long.parseLong(courseId));
+        return this.courseService.getCourse(Long.parseLong(courseId));
     }
     @PostMapping("/courses")
     public Course addCourse(@RequestBody Course course){
-        return courseService.addCourse(course);
+        return this.courseService.addCourse(course);
     }
-    @PutMapping("/courses")
+
+    @PutMapping("/courses/{courseID}")
     public Course updateCourse(@RequestBody Course course){
-        return courseService.updateCourse(course);
+        return this.courseService.updateCourse(course);
     }
     @DeleteMapping("/courses/{courseID}")
     public ResponseEntity<HttpRequest> deleteCourse(@PathVariable String courseID){
